@@ -7,7 +7,7 @@
 #define EPSILON 0.001
 
 double func(double x) {
-    return std::exp(x);
+    return (x + 2) * std::exp(x - 1);
 }
 
 double calc_pr(double func(double), double a, double b, size_t n) {

@@ -77,7 +77,7 @@ void print_padded_utf8(const std::string& s, size_t width) {
 }
 
 int main() {
-    double a = 0;
+    double a = -2;
     double b = 1;
     size_t n = 2;
 
@@ -117,12 +117,12 @@ int main() {
         }
         if (std::abs(eps3) < EPSILON && !end3) {
             count--;
-            double I = calc_tr(func, a, b, n);
-            answer tr = {
+            double I = calc_Sm(func, a, b, n);
+            answer Sm = {
                 "Метод Симпсона",
                 n, I, eps3, I + eps3
             };
-            answers.push_back(tr);
+            answers.push_back(Sm);
             end3 = true;
         } else if (std::abs(eps3) > EPSILON) {
             eps3 = (calc_Sm(func, a, b, n * 2) - calc_Sm(func, a, b, n)) / (std::pow(2, 4) - 1);

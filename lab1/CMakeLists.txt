@@ -7,6 +7,7 @@ add_executable(lab1
         ../include/Matrix/defaultmult.cpp
         ../include/Solver/solver.cpp
         ../include/Solver/solver.h
+        ../include/Utils/utils.h
 )
 
 target_include_directories(lab1 PRIVATE

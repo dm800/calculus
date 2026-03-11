@@ -2,7 +2,8 @@
 #include <Matrix/matrix.h>
 #include <cmath>
 
-#include "Solver/solver.h"
+#include <Solver/solver.h>
+#include <Utils/utils.h>
 
 int main() {
     std::vector<std::vector<double>> data = {
@@ -51,23 +52,10 @@ int main() {
     }
     b_i[n - 1] = (y_i[n] - y_i[n - 1]) / h - 2 * h / 3 * c_i[n - 1];
 
-    std::cout << "a_i: ";
-    for (auto elem : a_i) {
-        std::cout << elem << ' ';
-    }
-    std::cout << "\nb_i: ";
-    for (auto elem : b_i) {
-        std::cout << elem << ' ';
-    }
-    std::cout << "\nc_i: ";
-
-    for (auto elem : c_i) {
-        std::cout << elem << ' ';
-    }
-    std::cout << "\nd_i: ";
-    for (auto elem : d_i) {
-        std::cout << elem << ' ';
-    }
+    std::cout << "a_i: " << a_i;
+    std::cout << "\nb_i: " << b_i;
+    std::cout << "\nc_i: " << c_i;
+    std::cout << "\nd_i: " << d_i;
     std::cout << "\nd_i\tx_i\tf(x_i)\t\ts_i(x_i)\t%\t in nodes \n";
     for (int i = 0; i < n; i++) {
         double s_i = a_i[i] +

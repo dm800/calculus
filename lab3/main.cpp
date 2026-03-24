@@ -3,6 +3,7 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <Utils/utils.h>
 
 #define EPSILON 0.001
 
@@ -57,24 +58,6 @@ struct answer {
     double R;
     double IR;
 };
-
-size_t utf8_len(const std::string& s) {
-    size_t len = 0;
-    for (unsigned char c : s) {
-        if ((c & 0xC0) != 0x80) {
-            ++len;
-        }
-    }
-    return len;
-}
-
-void print_padded_utf8(const std::string& s, size_t width) {
-    std::cout << s;
-    size_t visible = utf8_len(s);
-    if (visible < width) {
-        std::cout << std::string(width - visible, ' ');
-    }
-}
 
 int main() {
     double a = -2;

@@ -8,7 +8,6 @@ add_executable(lab1
         ../include/Solver/solver.cpp
         ../include/Solver/solver.h
         ../include/Utils/utils.h
-        ../lab4/main.cpp
 )
 
 target_include_directories(lab1 PRIVATE

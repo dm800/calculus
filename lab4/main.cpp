@@ -1,3 +1,4 @@
+#include <cmath>
 #include <Utils/utils.h>
 
 double f1_x(double x, double y) {
@@ -32,8 +33,9 @@ int main() {
     double x = -1.5;
     double y = 1.5;
 
-    const double eps = 1e-6;
+    const double eps = 1e-3;
     const int max_iter = 100;
+    size_t n = 0;
 
     for (int k = 0; k < max_iter; k++) {
         double a11 = f1_x(x, y);
@@ -50,16 +52,20 @@ int main() {
         double dx = (b1 * a22 - b2 * a12) / det;
         double dy = (a11 * b2 - a21 * b1) / det;
 
+        double px = x;
+        double py = y;
         x += dx;
         y += dy;
+        n++;
 
-        if (std::sqrt(dx*dx + dy*dy) < eps) {
+        if (std::max(std::abs(px - x), std::abs(py - y)) < eps) {
             break;
         }
     }
 
     std::cout << "x = " << x << "\n";
     std::cout << "y = " << y << "\n";
+    std::cout << "iterations = " << n << "\n";
 
     return 0;
 }

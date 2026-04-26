@@ -36,20 +36,28 @@ int main() {
 
     std::cout << std::fixed << std::setprecision(6);
 
-    std::cout << "k | x1        x2        | f(x)      | norm\n";
-    std::cout << "--------------------------------------------------\n";
+    std::cout << "k | "
+              << std::setw(10) << "x1"
+              << std::setw(10) << "x2"
+              << " | "
+              << std::setw(10) << "f(x)"
+              << " | "
+              << std::setw(10) << "norm\n";
+
+    std::cout << "----------------------------------------------------------\n";
 
     for (int k = 0; k < max_iter; ++k) {
 
         double gx = f_x(x1, x2);
         double gy = f_y(x1, x2);
 
-        double norm = std::max(std::abs(gx), std::abs(gy));
+        double norm = std::sqrt(gx*gx + gy*gy);
 
-        std::cout << k << " | "
-                  << x1 << "  " << x2 << " | "
-                  << f(x1, x2) << " | "
-                  << norm << "\n";
+        std::cout << std::setw(2) << k << " | "
+                  << std::setw(10) << x1
+                  << std::setw(10) << x2 << " | "
+                  << std::setw(10) << f(x1, x2) << " | "
+                  << std::setw(10) << norm << "\n";
 
         if (norm < eps) break;
 
@@ -58,13 +66,14 @@ int main() {
         double fxy = f_xy(x1, x2);
 
         double numerator = gx*gx + gy*gy;
-
         double denominator = fxx*gx*gx + 2*fxy*gx*gy + fyy*gy*gy;
+
+        if (std::abs(denominator) < 1e-12) break;
 
         double t = numerator / denominator;
 
-        x1 = x1 - t * gx;
-        x2 = x2 - t * gy;
+        x1 -= t * gx;
+        x2 -= t * gy;
     }
 
     std::cout << "Result: x1 = " << x1 << ", x2 = " << x2 << "\n";

@@ -61,8 +61,8 @@ int main() {
     double b = a_prime;
     double a = std::exp(b_prime);
 
-    std::cout << "Before linear: a' = " << a_prime << ", b' = " << b_prime << std::endl;
-    std::cout << "After linear: a = " << a << ", b = " << b << std::endl;
+    std::cout << "Before delinear: a' = " << a_prime << ", b' = " << b_prime << std::endl;
+    std::cout << "After delinear: a = " << a << ", b = " << b << std::endl;
     std::cout << std::fixed;
     std::cout.precision(6);
     std::cout << " x_i      | y_i       | f(x_i)" << std::endl;

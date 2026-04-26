@@ -66,6 +66,8 @@ int main() {
     std::cout << "x = " << x << "\n";
     std::cout << "y = " << y << "\n";
     std::cout << "iterations = " << n << "\n";
+    std::cout << "sin(y + 2) - x = " << std::sin(y + 2) - x << ", expected: 1.5" << std::endl;
+    std::cout << "y + cos(x - 2) = " << y + std::cos(x - 2) << ", expected: 0.5" << std::endl;
 
     return 0;
 }
